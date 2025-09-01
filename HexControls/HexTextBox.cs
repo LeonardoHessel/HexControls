@@ -19,8 +19,25 @@ namespace HexControls
     {
         static HexTextBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(HexTextBox), new FrameworkPropertyMetadata(typeof(HexTextBox)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(HexTextBox),
+                new FrameworkPropertyMetadata(typeof(HexTextBox)));
         }
+
+        #region Dependency Properties
+
+        // FocusBorderBrush Property
+        public Brush FocusBorderBrush
+        {
+            get => (Brush)GetValue(FocusBorderBrushProperty);
+            set => SetValue(FocusBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusBorderBrushProperty =
+            DependencyProperty.Register(
+                nameof(FocusBorderBrush),
+                typeof(Brush),
+                typeof(HexTextBox),
+                new PropertyMetadata(new SolidColorBrush(Colors.DarkGray)));
 
         // Background Property
         public Brush Background
@@ -28,12 +45,13 @@ namespace HexControls
             get => (Brush)GetValue(BackgroundProperty);
             set => SetValue(BackgroundProperty, value);
         }
+
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register(
                 nameof(Background),
                 typeof(Brush),
                 typeof(HexTextBox),
-                new PropertyMetadata(Brushes.Transparent));
+                new PropertyMetadata(new SolidColorBrush(Colors.LightGray)));
 
         // BorderBrush Property
         public Brush BorderBrush
@@ -41,12 +59,13 @@ namespace HexControls
             get => (Brush)GetValue(BorderBrushProperty);
             set => SetValue(BorderBrushProperty, value);
         }
+
         public static readonly DependencyProperty BorderBrushProperty =
             DependencyProperty.Register(
                 nameof(BorderBrush),
                 typeof(Brush),
                 typeof(HexTextBox),
-                new PropertyMetadata(Brushes.Transparent));
+                new PropertyMetadata(Brushes.Gray));
 
         // BorderThickness Property
         public Thickness BorderThickness
@@ -54,9 +73,10 @@ namespace HexControls
             get => (Thickness)GetValue(BorderThicknessProperty);
             set => SetValue(BorderThicknessProperty, value);
         }
+
         public static readonly DependencyProperty BorderThicknessProperty =
             DependencyProperty.Register(
-                nameof(Thickness),
+                nameof(BorderThickness),
                 typeof(Thickness),
                 typeof(HexTextBox),
                 new PropertyMetadata(new Thickness(1)));
@@ -67,6 +87,7 @@ namespace HexControls
             get => (CornerRadius)GetValue(CornerRadiusProperty);
             set => SetValue(CornerRadiusProperty, value);
         }
+
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(
                 nameof(CornerRadius),
@@ -80,6 +101,7 @@ namespace HexControls
             get => (string)GetValue(LabelProperty);
             set => SetValue(LabelProperty, value);
         }
+
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register(
                 nameof(Label),
@@ -93,6 +115,7 @@ namespace HexControls
             get => (double)GetValue(LabelFontSizeProperty);
             set => SetValue(LabelFontSizeProperty, value);
         }
+
         public static readonly DependencyProperty LabelFontSizeProperty =
             DependencyProperty.Register(
                 nameof(LabelFontSize),
@@ -106,6 +129,7 @@ namespace HexControls
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
+
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register(
                 nameof(Text),
@@ -121,11 +145,14 @@ namespace HexControls
             get => (bool)GetValue(IsEditableProperty);
             set => SetValue(IsEditableProperty, value);
         }
+
         public static readonly DependencyProperty IsEditableProperty =
             DependencyProperty.Register(
                 nameof(IsEditable),
                 typeof(bool),
                 typeof(HexTextBox),
                 new PropertyMetadata(true));
+
+        #endregion
     }
 }

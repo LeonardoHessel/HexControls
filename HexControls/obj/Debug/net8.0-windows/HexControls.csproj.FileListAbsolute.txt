@@ -10,6 +10,7 @@ C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\HexControls.GeneratedMSB
 C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\HexControls.AssemblyInfoInputs.cache
 C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\HexControls.AssemblyInfo.cs
 C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\HexControls.csproj.CoreCompileInputs.cache
+C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\HexControls.sourcelink.json
 C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\HexControls.dll
 C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\refint\HexControls.dll
 C:\Dev\HexControls\HexControls\obj\Debug\net8.0-windows\HexControls.pdb
