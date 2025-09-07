@@ -21,31 +21,50 @@
                 x:Name="HexTextBoxA"
                 Width="200"
                 Height="60"
-                Margin="10"
-                FocusBorderBrush="#FF7F00"
+                Margin="5"
                 Background="#333333"
                 BorderBrush="#555555"
                 BorderThickness="2"
                 CornerRadius="5"
+                FocusBorderBrush="#FF7F00"
                 FontFamily="Segoe"
                 FontSize="24"
                 Foreground="#CCCCCC"
                 Label="Nome"
                 LabelFontSize="14" />
+
             <hex:HexTextBox
                 x:Name="HexTextBoxB"
                 Width="200"
                 Height="60"
-                FocusBorderBrush="#FF7F00"
+                Margin="5"
                 Background="#333333"
                 BorderBrush="#555555"
                 BorderThickness="2"
                 CornerRadius="5"
+                FocusBorderBrush="#FF7F00"
                 FontFamily="Segoe"
                 FontSize="24"
                 Foreground="#CCCCCC"
                 Label="Sobrenome"
                 LabelFontSize="14" />
+
+            <hex:HexPasswordBox
+                x:Name="HexPasswodBox"
+                Width="200"
+                Height="60"
+                Margin="5"
+                Background="#333333"
+                BorderBrush="#555555"
+                BorderThickness="2"
+                CornerRadius="5"
+                FocusBorderBrush="#FF7F00"
+                FontFamily="Segoe"
+                FontSize="24"
+                Foreground="#CCCCCC"
+                Label="Senha"
+                LabelFontSize="14" />
+
         </StackPanel>
     </Border>
 </Window>
