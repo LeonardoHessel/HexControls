@@ -11,6 +11,7 @@
     Height="350"
     AllowsTransparency="True"
     Background="Transparent"
+    WindowStartupLocation="CenterOwner"
     WindowStyle="None">
     <Border
         Background="#222222"
@@ -30,6 +31,7 @@
                 FontFamily="Segoe"
                 FontSize="24"
                 Foreground="#CCCCCC"
+                InfoText="E ai, funciona?"
                 Label="Nome"
                 LabelFontSize="14" />
 
