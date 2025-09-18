@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using HexControls;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,6 +21,16 @@ namespace TestApp
         {
             InitializeComponent();
             
+        }
+
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {
+            HexTextBoxA.Text = "48656C";
+
+            HexPasswodBox.Password = "Senha?";
+
+            HexTextBoxA.IsReadOnly = !HexTextBoxA.IsReadOnly;
+
         }
     }
 }

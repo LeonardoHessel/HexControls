@@ -18,10 +18,10 @@ namespace HexControls
 {
     public class HexTextBox : Control
     {
-
         #region Fields
         // Campos privados que representam partes internas do controle (PasswordBox, TextBox, ToggleButton).
         // Não são expostos publicamente; servem apenas para a implementação interna.
+        private bool _isUpdatingText;
 
         #endregion
 
@@ -45,14 +45,51 @@ namespace HexControls
         {
             base.OnApplyTemplate();
 
-            if (GetTemplateChild("Part_InfoButton") is Button button)
+            if (GetTemplateChild("Part_TextBox") is TextBox textBox)
+                textBox.TextChanged += TextBox_TextChanged;
+
+            if (GetTemplateChild("Part_InfoButton") is Button infoButton)
             {
-                button.ApplyTemplate();
-                if (button.Template.FindName("Part_Popup", button) is Popup popup)
+                infoButton.ApplyTemplate();
+                if (infoButton.Template.FindName("Part_Popup", infoButton) is Popup popup)
                 {
                     popup.CustomPopupPlacementCallback = new CustomPopupPlacementCallback(PlacePopup);
                 } 
             }
+
+            if (GetTemplateChild("Part_CopyButton") is Button copyButton)
+                copyButton.Click += CopyButtonClicked;
+
+        }
+
+        #endregion
+
+        #region Events
+        // Manipuladores de eventos dos elementos internos (PasswordChanged, TextChanged, etc.).
+        // Responsáveis por manter a sincronização entre interface visual e propriedades de dependência.
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_isUpdatingText) return;
+
+            try
+            {
+                _isUpdatingText = true;
+                if (sender is TextBox textBox)
+                {
+                    Text = textBox.Text;
+                }
+            }
+            finally
+            {
+                _isUpdatingText = false;
+            }
+        }
+
+        private void CopyButtonClicked(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Text))
+                Clipboard.SetText(Text);
         }
 
         #endregion
@@ -68,6 +105,7 @@ namespace HexControls
 
             return new CustomPopupPlacement[] { placement };
         }
+
         #endregion
 
         #region DP - Declarations
@@ -118,12 +156,20 @@ namespace HexControls
                    string.Empty,
                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        public static readonly DependencyProperty IsEditableProperty =
+        public static readonly DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register(
-                nameof(IsEditable),
+                nameof(IsReadOnly),
                 typeof(bool),
                 typeof(HexTextBox),
-                new PropertyMetadata(true));
+                new PropertyMetadata(false));
+
+        public static readonly DependencyProperty ShowCopyButtonProperty =
+            DependencyProperty.Register(
+                nameof(ShowCopyButton),
+                typeof(bool),
+                typeof(HexTextBox),
+                new PropertyMetadata(false));
+
         #endregion
 
         #region DP - Wrappers
@@ -166,10 +212,16 @@ namespace HexControls
             set => SetValue(TextProperty, value);
         }
 
-        public bool IsEditable
+        public bool IsReadOnly
         {
-            get => (bool)GetValue(IsEditableProperty);
-            set => SetValue(IsEditableProperty, value);
+            get => (bool)GetValue(IsReadOnlyProperty);
+            set => SetValue(IsReadOnlyProperty, value);
+        }
+
+        public bool ShowCopyButton
+        {
+            get => (bool)GetValue(ShowCopyButtonProperty);
+            set => SetValue(ShowCopyButtonProperty, value);
         }
 
         #endregion

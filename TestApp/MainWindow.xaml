@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:TestApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="600"
+    Width="400"
     Height="350"
     AllowsTransparency="True"
     Background="Transparent"
@@ -31,9 +31,10 @@
                 FontFamily="Segoe"
                 FontSize="24"
                 Foreground="#CCCCCC"
-                InfoText="E ai, funciona?"
                 Label="Nome"
-                LabelFontSize="14" />
+                LabelFontSize="14"
+                ShowCopyButton="True"
+                InfoText="Funcionalidade OK!"/>
 
             <hex:HexTextBox
                 x:Name="HexTextBoxB"
@@ -66,6 +67,13 @@
                 Foreground="#CCCCCC"
                 Label="Senha"
                 LabelFontSize="14" />
+
+            <Button
+                Width="100"
+                Height="30"
+                Margin="5"
+                Click="Button_Click"
+                Content="Copiar" />
 
         </StackPanel>
     </Border>
